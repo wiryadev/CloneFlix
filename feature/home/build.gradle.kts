@@ -1,20 +1,18 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.wiryadev.cloneflix"
-    compileSdk = AndroidProjectConfig.compileSdk
+    namespace = "com.wiryadev.home"
+    compileSdk = 32
 
     defaultConfig {
-        applicationId = AndroidProjectConfig.applicationId
-        minSdk = AndroidProjectConfig.minSdk
-        targetSdk = AndroidProjectConfig.targetSdk
-        versionCode = AndroidProjectConfig.versionCode
-        versionName = AndroidProjectConfig.versionName
+        minSdk = 21
+        targetSdk = 32
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -36,6 +34,11 @@ android {
 }
 
 dependencies {
-    implementation(project(":shared"))
-    implementation(project(":feature:splashscreen"))
+
+    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.appcompat:appcompat:1.5.0")
+    implementation("com.google.android.material:material:1.6.1")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 }

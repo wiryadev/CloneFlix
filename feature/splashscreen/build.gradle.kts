@@ -1,20 +1,18 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.wiryadev.cloneflix"
+    namespace = "com.wiryadev.splashscreen"
     compileSdk = AndroidProjectConfig.compileSdk
 
     defaultConfig {
-        applicationId = AndroidProjectConfig.applicationId
         minSdk = AndroidProjectConfig.minSdk
         targetSdk = AndroidProjectConfig.targetSdk
-        versionCode = AndroidProjectConfig.versionCode
-        versionName = AndroidProjectConfig.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -25,6 +23,9 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+    buildFeatures {
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -37,5 +38,7 @@ android {
 
 dependencies {
     implementation(project(":shared"))
-    implementation(project(":feature:splashscreen"))
+    implementation("androidx.appcompat:appcompat:1.5.0")
+    implementation("com.google.android.material:material:1.4.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 }
