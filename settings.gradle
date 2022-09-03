@@ -12,7 +12,9 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "CloneFlix"
 include ':app'
 include ':styling'
 include ':core'
+include ':shared'
