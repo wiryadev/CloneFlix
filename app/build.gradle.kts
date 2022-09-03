@@ -38,4 +38,6 @@ android {
 dependencies {
     implementation(project(":shared"))
     implementation(project(":feature:splashscreen"))
+    implementation(project(":feature:home"))
+    implementation(project(":feature:login"))
 }

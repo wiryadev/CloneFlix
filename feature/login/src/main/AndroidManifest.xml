@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".presentation.HomeActivity"
+            android:name=".presentation.LoginActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

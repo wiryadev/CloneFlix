@@ -1,7 +1,9 @@
 package com.wiryadev.splashscreen.presentation
 
+import android.content.Intent
 import android.widget.Toast
 import com.wiryadev.core.base.BaseActivity
+import com.wiryadev.shared.router.ActivityRouter
 import com.wiryadev.shared.utils.ext.subscribe
 import com.wiryadev.splashscreen.databinding.ActivitySplashscreenBinding
 import org.koin.android.ext.android.inject
@@ -11,6 +13,8 @@ class SplashscreenActivity : BaseActivity<ActivitySplashscreenBinding, Splashscr
 ) {
 
     override val viewModel: SplashscreenViewModel by inject()
+
+    val router: ActivityRouter by inject()
 
     override fun initView() {
         viewModel.syncUser()
@@ -34,11 +38,17 @@ class SplashscreenActivity : BaseActivity<ActivitySplashscreenBinding, Splashscr
     }
 
     private fun navigateToLogin() {
-        Toast.makeText(this, "Navigate to login", Toast.LENGTH_SHORT).show()
+        startActivity(router.loginActivity(this))
     }
 
     private fun navigateToHome() {
-        Toast.makeText(this, "Navigate to home", Toast.LENGTH_SHORT).show()
+        startActivity(router.homeActivity(this))
+    }
+
+    private fun Intent.splashFlag() {
+        this.apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
     }
 
 }

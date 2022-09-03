@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.wiryadev.home"
+    namespace = "com.wiryadev.login"
     compileSdk = 32
 
     defaultConfig {
