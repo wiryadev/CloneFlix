@@ -2,7 +2,7 @@ package com.wiryadev.shared.data.remote
 
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.wiryadev.core.BuildConfig
-import com.wiryadev.shared.domain.GetUserToken
+import com.wiryadev.shared.domain.GetUserTokenUseCase
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
@@ -13,7 +13,7 @@ import retrofit2.create
 import java.util.concurrent.TimeUnit
 
 class NetworkClient(
-    val getUserToken: GetUserToken,
+    val getUserTokenUseCase: GetUserTokenUseCase,
     val chuckerInterceptor: ChuckerInterceptor
 ) {
 
@@ -21,7 +21,7 @@ class NetworkClient(
         val authInterceptor = Interceptor {
             val requestBuilder = it.request().newBuilder()
             runBlocking {
-                getUserToken().first { tokenResponse ->
+                getUserTokenUseCase().first { tokenResponse ->
                     val token = tokenResponse.payload
                     if (!token.isNullOrEmpty()) {
                         requestBuilder.addHeader("Authorization", "Bearer $token")

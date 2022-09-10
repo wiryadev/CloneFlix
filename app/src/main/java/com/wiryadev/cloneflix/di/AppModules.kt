@@ -10,7 +10,7 @@ object AppModules : BaseModules {
 
     override fun getModules(): List<Module> = listOf(router)
 
-    val router = module {
+    private val router = module {
         single<ActivityRouter> { ActivityRouterImpl() }
     }
 }

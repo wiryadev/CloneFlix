@@ -4,6 +4,7 @@
     <application>
         <activity
             android:name=".presentation.LoginActivity"
+            android:theme="@style/CloneFlix.NoActionBar"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

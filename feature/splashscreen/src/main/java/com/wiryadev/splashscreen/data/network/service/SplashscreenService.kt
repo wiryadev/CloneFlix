@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface SplashscreenService {
 
-    @GET("api/vi/sync")
+    @GET("api/v1/sync")
     suspend fun syncUser(): BaseResponse<SyncResponse>
 
 }

@@ -14,7 +14,8 @@ import com.wiryadev.shared.data.repository.SharedApiRepository
 import com.wiryadev.shared.data.repository.SharedApiRepositoryImpl
 import com.wiryadev.shared.data.repository.UserPreferenceRepository
 import com.wiryadev.shared.data.repository.UserPreferenceRepositoryImpl
-import com.wiryadev.shared.domain.GetUserToken
+import com.wiryadev.shared.domain.GetUserTokenUseCase
+import com.wiryadev.shared.domain.SaveAuthDataUseCase
 import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.Module
@@ -46,7 +47,8 @@ object SharedModules : BaseModules {
     }
 
     private val sharedUseCase = module {
-        single { GetUserToken(get(), Dispatchers.IO) }
+        single { GetUserTokenUseCase(get(), Dispatchers.IO) }
+        single { SaveAuthDataUseCase(get(), Dispatchers.IO) }
     }
 
     private val common = module {
