@@ -1,0 +1,19 @@
+<resources>
+    <string name="error_field_password">Password should be filled</string>
+    <string name="error_field_password_length">Password must be at least 8 characters</string>
+    <string name="error_field_email">Email should be filled</string>
+    <string name="error_field_email_invalid">Please enter a valid Email</string>
+    <string name="error_field_empty">This field should be filled</string>
+    <string name="error_field_username_length">Username must be at least 8 characters</string>
+    <string name="error_field_username_whitespace">Username can not contains whitespace</string>
+
+    <string name="hint_email_field">Email</string>
+    <string name="text_button_already_have_account">Already have an Account</string>
+    <string name="text_button_register">Register</string>
+    <string name="hint_field_gender">Gender</string>
+    <string name="hint_field_birthdate">Birthdate</string>
+    <string name="hint_field_username">Username</string>
+    <string name="hint_field_password">Password</string>
+    <string name="hint_field_email">Email</string>
+    <string name="logo">Logo</string>
+</resources>

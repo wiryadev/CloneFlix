@@ -5,7 +5,7 @@ import androidx.core.view.isVisible
 import com.google.android.material.textfield.TextInputLayout
 import com.wiryadev.core.base.BaseActivity
 import com.wiryadev.core.exception.FieldErrorException
-import com.wiryadev.login.data.constans.LoginFieldConstants
+import com.wiryadev.login.constans.LoginFieldConstants
 import com.wiryadev.login.databinding.ActivityLoginBinding
 import com.wiryadev.shared.router.ActivityRouter
 import com.wiryadev.shared.utils.ext.subscribe
@@ -18,8 +18,13 @@ class LoginActivity :
     override val viewModel: LoginViewModel by inject()
 
     private val router: ActivityRouter by inject()
+
     override fun initView() {
         with(binding) {
+            btnRegisterNewAccount.setOnClickListener {
+                navigateToRegister()
+            }
+
             btnLogin.setOnClickListener {
                 viewModel.loginUser(
                     email = etEmail.text?.trim().toString(),
@@ -78,7 +83,6 @@ class LoginActivity :
         with(binding) {
             tilEmail.isErrorEnabled = false
             tilPassword.isErrorEnabled = false
-
         }
     }
 
@@ -88,6 +92,10 @@ class LoginActivity :
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             }
         )
+    }
+
+    private fun navigateToRegister() {
+        startActivity(router.registerActivity(this))
     }
 
 }

@@ -3,6 +3,7 @@ package com.wiryadev.cloneflix
 import android.app.Application
 import com.wiryadev.cloneflix.di.AppModules
 import com.wiryadev.login.di.LoginModule
+import com.wiryadev.register.di.RegisterModule
 import com.wiryadev.shared.di.SharedModules
 import com.wiryadev.splashscreen.di.SplashscreenModule
 import org.koin.android.ext.koin.androidContext
@@ -22,6 +23,7 @@ class CloneFlixApp : Application() {
                         + SharedModules.getModules()
                         + SplashscreenModule.getModules()
                         + LoginModule.getModules()
+                        + RegisterModule.getModules()
             )
         }
     }

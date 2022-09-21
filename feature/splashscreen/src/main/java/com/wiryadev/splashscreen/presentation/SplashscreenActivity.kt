@@ -38,15 +38,15 @@ class SplashscreenActivity : BaseActivity<ActivitySplashscreenBinding, Splashscr
     }
 
     private fun navigateToLogin() {
-        startActivity(router.loginActivity(this))
+        startActivity(router.loginActivity(this).splashFlag())
     }
 
     private fun navigateToHome() {
-        startActivity(router.homeActivity(this))
+        startActivity(router.homeActivity(this).splashFlag())
     }
 
-    private fun Intent.splashFlag() {
-        this.apply {
+    private fun Intent.splashFlag(): Intent {
+        return this.apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
     }

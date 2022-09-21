@@ -4,8 +4,8 @@ import com.wiryadev.core.base.BaseUseCase
 import com.wiryadev.core.exception.FieldErrorException
 import com.wiryadev.core.wrapper.ViewResource
 import com.wiryadev.login.R
-import com.wiryadev.login.data.constans.LoginFieldConstants.FIELD_EMAIL
-import com.wiryadev.login.data.constans.LoginFieldConstants.FIELD_PASSWORD
+import com.wiryadev.login.constans.LoginFieldConstants.FIELD_EMAIL
+import com.wiryadev.login.constans.LoginFieldConstants.FIELD_PASSWORD
 import com.wiryadev.shared.utils.StringUtils
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
