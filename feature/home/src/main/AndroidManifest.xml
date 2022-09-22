@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".presentation.HomeActivity"
+            android:name=".presentation.ui.home.HomeActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

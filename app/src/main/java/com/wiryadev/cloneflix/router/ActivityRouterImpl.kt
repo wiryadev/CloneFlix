@@ -2,7 +2,7 @@ package com.wiryadev.cloneflix.router
 
 import android.content.Context
 import android.content.Intent
-import com.wiryadev.home.presentation.HomeActivity
+import com.wiryadev.home.presentation.ui.home.HomeActivity
 import com.wiryadev.login.presentation.LoginActivity
 import com.wiryadev.register.presentation.RegisterActivity
 import com.wiryadev.shared.router.ActivityRouter

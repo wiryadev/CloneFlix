@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace = "com.wiryadev.home"
-    compileSdk = 32
+    compileSdk = AndroidProjectConfig.compileSdk
 
     defaultConfig {
-        minSdk = 21
-        targetSdk = 32
+        minSdk = AndroidProjectConfig.minSdk
+        targetSdk = AndroidProjectConfig.targetSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

@@ -2,6 +2,7 @@ package com.wiryadev.cloneflix
 
 import android.app.Application
 import com.wiryadev.cloneflix.di.AppModules
+import com.wiryadev.home.di.HomeModule
 import com.wiryadev.login.di.LoginModule
 import com.wiryadev.register.di.RegisterModule
 import com.wiryadev.shared.di.SharedModules
@@ -24,6 +25,7 @@ class CloneFlixApp : Application() {
                         + SplashscreenModule.getModules()
                         + LoginModule.getModules()
                         + RegisterModule.getModules()
+                        + HomeModule.getModules()
             )
         }
     }

@@ -1,4 +1,4 @@
-package com.wiryadev.home.presentation
+package com.wiryadev.home.presentation.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
