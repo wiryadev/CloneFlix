@@ -14,8 +14,8 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel>(
     val bindingFactory: (LayoutInflater, ViewGroup?, Boolean) -> VB
 ) : Fragment() {
 
-    protected var _binding: VB? = null
-    private val binding: VB get() = _binding!!
+    private var _binding: VB? = null
+    protected val binding: VB get() = _binding!!
     protected abstract val viewModel: VM
 
     override fun onCreateView(
@@ -26,6 +26,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel>(
         _binding = bindingFactory.invoke(layoutInflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
@@ -46,7 +47,11 @@ abstract class BaseFragment<VB : ViewBinding, VM : ViewModel>(
         exception: Exception
     ) {
         if (isErrorEnabled) {
-            Snackbar.make(binding.root, requireContext().getErrorMessageByException(exception), Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(
+                binding.root,
+                requireContext().getErrorMessageByException(exception),
+                Snackbar.LENGTH_SHORT
+            ).show()
         }
     }
 }

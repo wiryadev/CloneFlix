@@ -14,6 +14,7 @@ import com.wiryadev.shared.data.repository.SharedApiRepository
 import com.wiryadev.shared.data.repository.SharedApiRepositoryImpl
 import com.wiryadev.shared.data.repository.UserPreferenceRepository
 import com.wiryadev.shared.data.repository.UserPreferenceRepositoryImpl
+import com.wiryadev.shared.domain.GetCurrentUserUseCase
 import com.wiryadev.shared.domain.GetUserTokenUseCase
 import com.wiryadev.shared.domain.SaveAuthDataUseCase
 import kotlinx.coroutines.Dispatchers
@@ -49,6 +50,7 @@ object SharedModules : BaseModules {
     private val sharedUseCase = module {
         single { GetUserTokenUseCase(get(), Dispatchers.IO) }
         single { SaveAuthDataUseCase(get(), Dispatchers.IO) }
+        single { GetCurrentUserUseCase(get(), Dispatchers.IO) }
     }
 
     private val common = module {

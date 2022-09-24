@@ -11,7 +11,6 @@ import com.wiryadev.shared.data.model.viewparam.MovieViewParam
 
 class HomeAdapter(
     private val listener: HomeAdapterClickListener,
-    private val onMovieClicked: (MovieViewParam) -> Unit,
     private val recyclerViewPool: RecyclerView.RecycledViewPool,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -34,7 +33,7 @@ class HomeAdapter(
                     parent,
                     false
                 )
-                HomeSectionViewHolder(binding, recyclerViewPool, onMovieClicked)
+                HomeSectionViewHolder(binding, recyclerViewPool, listener)
             }
         }
     }

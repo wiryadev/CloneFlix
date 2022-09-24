@@ -7,14 +7,14 @@ import com.wiryadev.shared.router.ActivityRouter
 import com.wiryadev.shared.utils.ext.subscribe
 import com.wiryadev.splashscreen.databinding.ActivitySplashscreenBinding
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SplashscreenActivity : BaseActivity<ActivitySplashscreenBinding, SplashscreenViewModel>(
-    ActivitySplashscreenBinding::inflate
-) {
+class SplashscreenActivity :
+    BaseActivity<ActivitySplashscreenBinding, SplashscreenViewModel>(ActivitySplashscreenBinding::inflate) {
 
-    override val viewModel: SplashscreenViewModel by inject()
+    override val viewModel: SplashscreenViewModel by viewModel()
 
-    val router: ActivityRouter by inject()
+    private val router: ActivityRouter by inject()
 
     override fun initView() {
         viewModel.syncUser()

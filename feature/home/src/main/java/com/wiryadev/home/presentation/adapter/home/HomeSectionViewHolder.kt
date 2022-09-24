@@ -10,12 +10,11 @@ import com.wiryadev.shared.data.model.viewparam.MovieViewParam
 class HomeSectionViewHolder(
     private val binding: ItemHomeSectionBinding,
     private val recyclerViewPool: RecyclerView.RecycledViewPool,
-    private val onMovieClicked: (MovieViewParam) -> Unit,
-//    private val listener: HomeAdapterClickListener,
+    private val listener: HomeAdapterClickListener,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     private val movieAdapter: MovieAdapter by lazy {
-        MovieAdapter { onMovieClicked(it) }
+        MovieAdapter { listener.onMovieClicked(it) }
     }
 
     fun bindView(item: HomeUiItem.MovieSectionItem) {

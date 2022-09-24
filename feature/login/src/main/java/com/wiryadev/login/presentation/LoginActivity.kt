@@ -1,6 +1,7 @@
 package com.wiryadev.login.presentation
 
 import android.content.Intent
+import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import com.google.android.material.textfield.TextInputLayout
 import com.wiryadev.core.base.BaseActivity
@@ -11,11 +12,12 @@ import com.wiryadev.shared.router.ActivityRouter
 import com.wiryadev.shared.utils.ext.subscribe
 import com.wiryadev.shared.utils.listen
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity :
     BaseActivity<ActivityLoginBinding, LoginViewModel>(ActivityLoginBinding::inflate) {
 
-    override val viewModel: LoginViewModel by inject()
+    override val viewModel: LoginViewModel by viewModel()
 
     private val router: ActivityRouter by inject()
 

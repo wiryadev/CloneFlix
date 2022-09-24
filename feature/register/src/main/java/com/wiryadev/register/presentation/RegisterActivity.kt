@@ -12,11 +12,12 @@ import com.wiryadev.shared.utils.DateUtils.showDatePickerDialog
 import com.wiryadev.shared.utils.GenderUtils
 import com.wiryadev.shared.utils.ext.subscribe
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterActivity :
     BaseActivity<ActivityRegisterBinding, RegisterViewModel>(ActivityRegisterBinding::inflate) {
 
-    override val viewModel: RegisterViewModel by inject()
+    override val viewModel: RegisterViewModel by viewModel()
 
     private val router: ActivityRouter by inject()
 
@@ -32,7 +33,7 @@ class RegisterActivity :
             }
             btnRegister.setOnClickListener {
                 viewModel.registerUser(
-                   email = etEmail.text?.trim().toString(),
+                    email = etEmail.text?.trim().toString(),
                     password = etPassword.text?.trim().toString(),
                     username = etUsername.text?.trim().toString(),
                     birthdate = etBirthdate.text?.trim().toString(),
