@@ -10,6 +10,8 @@ import com.wiryadev.home.domain.GetUserWatchlistUseCase
 import com.wiryadev.home.presentation.viewparam.homeitem.HomeUiItem
 import com.wiryadev.shared.data.model.viewparam.MovieViewParam
 import com.wiryadev.shared.data.model.viewparam.UserViewParam
+import com.wiryadev.shared.delegates.AddOrRemoveWatchlistDelegate
+import com.wiryadev.shared.delegates.AddOrRemoveWatchlistDelegateImpl
 import com.wiryadev.shared.domain.GetCurrentUserUseCase
 import kotlinx.coroutines.launch
 
@@ -17,7 +19,11 @@ class HomeViewModel(
     private val getHomeFeedsUseCase: GetHomeFeedUseCase,
     private val getUserWatchlistUseCase: GetUserWatchlistUseCase,
     private val getCurrentUserUseCase: GetCurrentUserUseCase,
-) : ViewModel() {
+) : ViewModel(), AddOrRemoveWatchlistDelegate by AddOrRemoveWatchlistDelegateImpl() {
+
+    init {
+        init(viewModelScope)
+    }
 
     private val _homeFeedsResult = MutableLiveData<ViewResource<List<HomeUiItem>>>()
     val homeFeedsResult: LiveData<ViewResource<List<HomeUiItem>>> get() = _homeFeedsResult
@@ -35,6 +41,7 @@ class HomeViewModel(
             }
         }
     }
+
     fun getCurrentUser() {
         viewModelScope.launch {
             getCurrentUserUseCase().collect {
@@ -42,6 +49,7 @@ class HomeViewModel(
             }
         }
     }
+
     fun fetchWatchlist() {
         viewModelScope.launch {
             getUserWatchlistUseCase().collect {

@@ -1,8 +1,8 @@
 package com.wiryadev.home.presentation.ui.homefeed
 
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-//import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.wiryadev.core.base.BaseFragment
@@ -30,11 +30,11 @@ class HomeFeedFragment :
     private val homeAdapter: HomeAdapter by lazy {
         HomeAdapter(
             listener = createHomeAdapterClickListener(
-                onMyListClicked = {},
+                onMyListClicked = { viewModel.addOrRemoveWatchlist(it) },
                 onPlayMovieClicked = {},
                 onMovieClicked = {}
             ),
-            recyclerViewPool = recyclerViewPool
+            recyclerViewPool = recyclerViewPool,
         )
     }
 
@@ -60,22 +60,45 @@ class HomeFeedFragment :
                     showLoading(false)
                     error.exception?.let { e -> showError(true, e) }
 
-                })
+                }
+            )
         }
+
         viewModel.currentUserResult.observe(this) {
-            it.subscribe(doOnSuccess = { result ->
-                binding.ivAvatarUser.setImageDrawable(
-                    TextDrawable.builder()
-                        .beginConfig()
-                        .bold()
-                        .toUpperCase()
-                        .endConfig()
-                        .buildRect(
-                            text = result.payload?.username?.get(0).toString(),
-                            color = ColorGenerator.MATERIAL.randomColor
-                        )
-                )
-            })
+            it.subscribe(
+                doOnSuccess = { result ->
+                    binding.ivAvatarUser.setImageDrawable(
+                        TextDrawable.builder()
+                            .beginConfig()
+                            .bold()
+                            .toUpperCase()
+                            .endConfig()
+                            .buildRect(
+                                text = result.payload?.username?.get(0).toString(),
+                                color = ColorGenerator.MATERIAL.randomColor
+                            )
+                    )
+                }
+            )
+        }
+
+        viewModel.observeAddOrRemoveWatchlist().observe(this) {
+            it.subscribe(
+                doOnSuccess = { result ->
+                    Toast.makeText(
+                        requireContext(),
+                        if (result.payload?.isUserWatchlist == true) {
+                            getString(R.string.text_add_watchlist_success)
+                        } else {
+                            getString(R.string.text_remove_watchlist_success)
+                        },
+                        Toast.LENGTH_SHORT
+                    ).show()
+                },
+                doOnError = {
+
+                }
+            )
         }
     }
 
