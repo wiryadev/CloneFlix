@@ -9,7 +9,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.wiryadev.core.utils.getErrorMessageByException
 
 abstract class BaseActivity<VB : ViewBinding, VM : ViewModel>(
-    val bindingFactory: (LayoutInflater) -> VB
+    private val bindingFactory: (LayoutInflater) -> VB
 ) : AppCompatActivity() {
 
     protected lateinit var binding: VB

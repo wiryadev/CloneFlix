@@ -15,6 +15,10 @@ class DetailMovieActivity :
     override val viewModel: DetailMovieViewModel by viewModel()
 
     override fun initView() {
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
+
         val id = intent.getIntExtra(MOVIE_ID_KEY, DEFAULT_ID)
 
         if (id == DEFAULT_ID) return
