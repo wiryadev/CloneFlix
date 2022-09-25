@@ -2,6 +2,7 @@ package com.wiryadev.cloneflix
 
 import android.app.Application
 import com.wiryadev.cloneflix.di.AppModules
+import com.wiryadev.detailmovie.di.DetailMovieModule
 import com.wiryadev.home.di.HomeModule
 import com.wiryadev.login.di.LoginModule
 import com.wiryadev.register.di.RegisterModule
@@ -26,6 +27,7 @@ class CloneFlixApp : Application() {
                         + LoginModule.getModules()
                         + RegisterModule.getModules()
                         + HomeModule.getModules()
+                        + DetailMovieModule.getModules()
             )
         }
     }

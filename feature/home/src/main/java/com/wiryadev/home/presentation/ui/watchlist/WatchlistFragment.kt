@@ -7,7 +7,10 @@ import com.wiryadev.home.R
 import com.wiryadev.home.databinding.FragmentWatchlistBinding
 import com.wiryadev.home.presentation.adapter.movie.MovieAdapter
 import com.wiryadev.home.presentation.ui.home.HomeViewModel
+import com.wiryadev.shared.data.model.viewparam.MovieViewParam
+import com.wiryadev.shared.router.BottomSheetRouter
 import com.wiryadev.shared.utils.ext.subscribe
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class WatchlistFragment :
@@ -15,10 +18,12 @@ class WatchlistFragment :
 
     override val viewModel: HomeViewModel by sharedViewModel()
 
+    private val router: BottomSheetRouter by inject()
+
     private val movieAdapter: MovieAdapter by lazy {
         MovieAdapter(
             isGridLayout = true,
-            onItemClicked = {},
+            onItemClicked = { openBottomSheet(it) },
         )
     }
 
@@ -72,6 +77,11 @@ class WatchlistFragment :
     private fun showLoading(isShowLoading: Boolean) {
         binding.pbWatchlist.isVisible = isShowLoading
         binding.srlWatchlist.isRefreshing = isShowLoading
+    }
+
+    private fun openBottomSheet(movie: MovieViewParam) {
+        router.createMovieInfoBottomSheet(movie)
+            .show(childFragmentManager, "movie_info")
     }
 
 }

@@ -11,4 +11,6 @@ interface ActivityRouter {
 
     fun homeActivity(context: Context): Intent
 
+    fun detailMovieActivity(context: Context): Intent
+
 }
