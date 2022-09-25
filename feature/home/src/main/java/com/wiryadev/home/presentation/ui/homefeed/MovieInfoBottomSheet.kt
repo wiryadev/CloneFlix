@@ -12,7 +12,7 @@ import com.wiryadev.shared.utils.CommonUtils
 import com.wiryadev.styling.databinding.BottomSheetMovieInfoBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class MovieInfoBottomSheetDialogFragment : BottomSheetDialogFragment() {
+class MovieInfoBottomSheet : BottomSheetDialogFragment() {
 
     private var movie: MovieViewParam? = null
 
@@ -54,11 +54,11 @@ class MovieInfoBottomSheetDialogFragment : BottomSheetDialogFragment() {
     companion object {
         const val MOVIE_EXTRA_KEY = "movie_extra_key"
 
-        fun newInstance(movie: MovieViewParam): MovieInfoBottomSheetDialogFragment {
+        fun newInstance(movie: MovieViewParam): MovieInfoBottomSheet {
             val args = Bundle()
             args.putParcelable(MOVIE_EXTRA_KEY, movie)
 
-            return MovieInfoBottomSheetDialogFragment().apply {
+            return MovieInfoBottomSheet().apply {
                 arguments = args
             }
         }

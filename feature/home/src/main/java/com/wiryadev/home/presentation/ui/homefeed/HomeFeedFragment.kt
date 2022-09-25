@@ -12,10 +12,12 @@ import com.wiryadev.home.presentation.adapter.home.HomeAdapter
 import com.wiryadev.home.presentation.adapter.home.createHomeAdapterClickListener
 import com.wiryadev.home.presentation.ui.home.HomeViewModel
 import com.wiryadev.shared.data.model.viewparam.MovieViewParam
+import com.wiryadev.shared.router.BottomSheetRouter
 import com.wiryadev.shared.utils.ColorUtils
 import com.wiryadev.shared.utils.ext.subscribe
 import com.wiryadev.shared.utils.text_drawable.ColorGenerator
 import com.wiryadev.shared.utils.text_drawable.TextDrawable
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import kotlin.math.min
 
@@ -23,6 +25,8 @@ class HomeFeedFragment :
     BaseFragment<FragmentHomeFeedBinding, HomeViewModel>(FragmentHomeFeedBinding::inflate) {
 
     override val viewModel: HomeViewModel by sharedViewModel()
+
+    private val router: BottomSheetRouter by inject()
 
     private val recyclerViewPool: RecyclerView.RecycledViewPool by lazy {
         RecyclerView.RecycledViewPool()
@@ -135,7 +139,7 @@ class HomeFeedFragment :
     }
 
     private fun openBottomSheet(movie: MovieViewParam) {
-        MovieInfoBottomSheetDialogFragment.newInstance(movie)
+        router.createMovieInfoBottomSheet(movie)
             .show(childFragmentManager, "movie_info")
     }
 
