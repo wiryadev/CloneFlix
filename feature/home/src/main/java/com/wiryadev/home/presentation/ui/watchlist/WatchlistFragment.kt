@@ -3,6 +3,7 @@ package com.wiryadev.home.presentation.ui.watchlist
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import com.wiryadev.core.base.BaseFragment
+import com.wiryadev.home.R
 import com.wiryadev.home.databinding.FragmentWatchlistBinding
 import com.wiryadev.home.presentation.adapter.movie.MovieAdapter
 import com.wiryadev.home.presentation.ui.home.HomeViewModel
@@ -43,7 +44,12 @@ class WatchlistFragment :
                 doOnError = { error ->
                     showLoading(false)
                     error.exception?.let { e -> showError(true, e) }
-                }
+                },
+                doOnEmpty = {
+                    showLoading(false)
+                    binding.tvErrorWatchlist.isVisible = true
+                    binding.tvErrorWatchlist.text = getString(R.string.text_empty_watchlist)
+                },
             )
         }
     }
