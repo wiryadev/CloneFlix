@@ -7,6 +7,4 @@
     android:background="@color/on_top_view_color"
     android:padding="16dp"
     android:textColor="@color/white"
-    tools:text="Test">
-
-</TextView>
+    tools:text="Test" />

@@ -1,5 +1,9 @@
 package com.wiryadev.shared.data.model.viewparam
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class MovieViewParam(
     val id: Int,
     val cast: List<String>,
@@ -14,4 +18,4 @@ data class MovieViewParam(
     val trailerUrl: String,
     val videoUrl: String,
     var isUserWatchlist: Boolean,
-)
+) : Parcelable

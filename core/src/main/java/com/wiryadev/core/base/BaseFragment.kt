@@ -11,7 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.wiryadev.core.utils.getErrorMessageByException
 
 abstract class BaseFragment<VB : ViewBinding, VM : ViewModel>(
-    val bindingFactory: (LayoutInflater, ViewGroup?, Boolean) -> VB
+    private val bindingFactory: (LayoutInflater, ViewGroup?, Boolean) -> VB
 ) : Fragment() {
 
     private var _binding: VB? = null

@@ -11,6 +11,7 @@ import com.wiryadev.home.databinding.FragmentHomeFeedBinding
 import com.wiryadev.home.presentation.adapter.home.HomeAdapter
 import com.wiryadev.home.presentation.adapter.home.createHomeAdapterClickListener
 import com.wiryadev.home.presentation.ui.home.HomeViewModel
+import com.wiryadev.shared.data.model.viewparam.MovieViewParam
 import com.wiryadev.shared.utils.ColorUtils
 import com.wiryadev.shared.utils.ext.subscribe
 import com.wiryadev.shared.utils.text_drawable.ColorGenerator
@@ -32,7 +33,7 @@ class HomeFeedFragment :
             listener = createHomeAdapterClickListener(
                 onMyListClicked = { viewModel.addOrRemoveWatchlist(it) },
                 onPlayMovieClicked = {},
-                onMovieClicked = {}
+                onMovieClicked = { openBottomSheet(it) },
             ),
             recyclerViewPool = recyclerViewPool,
         )
@@ -131,6 +132,11 @@ class HomeFeedFragment :
 
     private fun showLoading(isShowLoading: Boolean) {
         binding.pbHome.isVisible = isShowLoading
+    }
+
+    private fun openBottomSheet(movie: MovieViewParam) {
+        MovieInfoBottomSheetDialogFragment.newInstance(movie)
+            .show(childFragmentManager, "movie_info")
     }
 
 }
