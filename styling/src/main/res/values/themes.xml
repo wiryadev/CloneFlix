@@ -33,7 +33,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="TCloneFlix.NoActionBar.FullScreen" parent="CloneFlix.NoActionBar">
+    <style name="CloneFlix.NoActionBar.FullScreen" parent="CloneFlix.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>

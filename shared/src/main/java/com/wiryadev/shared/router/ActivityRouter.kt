@@ -13,4 +13,6 @@ interface ActivityRouter {
 
     fun detailMovieActivity(context: Context): Intent
 
+    fun playerActivity(context: Context, videoUrl: String): Intent
+
 }

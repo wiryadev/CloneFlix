@@ -5,6 +5,7 @@ import android.content.Intent
 import com.wiryadev.detailmovie.presentation.detailmovie.DetailMovieActivity
 import com.wiryadev.home.presentation.ui.home.HomeActivity
 import com.wiryadev.login.presentation.LoginActivity
+import com.wiryadev.player.presentation.PlayerActivity
 import com.wiryadev.register.presentation.RegisterActivity
 import com.wiryadev.shared.router.ActivityRouter
 
@@ -24,6 +25,10 @@ class ActivityRouterImpl : ActivityRouter {
 
     override fun detailMovieActivity(context: Context): Intent {
         return Intent(context, DetailMovieActivity::class.java)
+    }
+
+    override fun playerActivity(context: Context, videoUrl: String): Intent {
+        return PlayerActivity.createIntent(context, videoUrl)
     }
 
 }

@@ -53,10 +53,11 @@ class MovieInfoBottomSheet : BottomSheetDialogFragment() {
             tvAdditionalInfo.text =
                 "${movieViewParam.releaseDate} \u2022 ${movieViewParam.runtime} \u2022 ${movieViewParam.filmRate}"
 
-            tvDetailMovie.setOnClickListener {navigateToDetail(movieViewParam) }
+            tvDetailMovie.setOnClickListener { navigateToDetail(movieViewParam) }
             ivClose.setOnClickListener { dismiss() }
             ivWatchlist.setOnClickListener { viewModel.addOrRemoveWatchlist(movieViewParam) }
             ivShare.setOnClickListener { CommonUtils.shareFilm(requireContext(), movieViewParam) }
+            llPlayMovie.setOnClickListener { navigateToPlayer(movieViewParam) }
         }
     }
 
@@ -66,6 +67,10 @@ class MovieInfoBottomSheet : BottomSheetDialogFragment() {
                 putExtra(DetailMovieActivity.MOVIE_ID_KEY, movieViewParam.id)
             }
         )
+    }
+
+    private fun navigateToPlayer(movieViewParam: MovieViewParam) {
+        startActivity(router.playerActivity(requireContext(), movieViewParam.videoUrl))
     }
 
     companion object {
