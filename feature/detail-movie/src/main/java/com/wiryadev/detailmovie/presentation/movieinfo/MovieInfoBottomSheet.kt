@@ -40,6 +40,11 @@ class MovieInfoBottomSheet : BottomSheetDialogFragment() {
         movie?.let { showData(it) }
     }
 
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
+
     private fun showData(movieViewParam: MovieViewParam) {
         with(binding) {
             ivPoster.load(movieViewParam.posterUrl)
